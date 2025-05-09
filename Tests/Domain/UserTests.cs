@@ -13,6 +13,14 @@ public class UserTests
     }
 
     [Fact]
+    public void ShouldCreateUserWithoutOtpCode()
+    {
+        var user = new User("testuser@niepodam.pl");
+        
+        Assert.Null(user.ActiveOtpCode);
+    }
+
+    [Fact]
     public void ShouldReplaceUsedRecoveryCodes()
     {
         var user = new User("testuser@niepodam.pl");
