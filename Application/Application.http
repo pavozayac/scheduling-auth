@@ -1,0 +1,37 @@
+@Application_HostAddress = http://localhost:5000
+@Email = new2@niepodam.pl
+
+GET {{Application_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+
+POST {{Application_HostAddress}}/api/user/
+Content-Type: application/json
+
+{
+  "email": "{{Email}}"
+}
+
+###
+
+GET {{Application_HostAddress}}/api/user/{{Email}}
+
+###
+
+POST {{Application_HostAddress}}/api/user/{{Email}}/complete
+Content-Type: application/json
+
+{
+  "code": "814475"
+}
+
+###
+
+POST {{Application_HostAddress}}/api/user/{{Email}}/reset
+Content-Type: application/json
+
+{
+  "newEmail": "new2@niepodam.pl",
+  "recoveryCode": "wgmVZtNsYsCloflp"
+}
