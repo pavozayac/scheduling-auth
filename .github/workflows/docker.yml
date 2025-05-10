@@ -1,0 +1,21 @@
+name: Docker build and publish
+
+on:
+  push:
+  pull_request:
+    branches: [main]
+  workflow_dispatch: 
+      
+env:
+  SERVICE_NAME: scheduling-auth
+
+jobs: 
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Build docker image
+        run: |
+          docker build -t ${{env.SERVICE_NAME}} .
